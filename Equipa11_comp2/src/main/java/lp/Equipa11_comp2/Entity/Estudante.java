@@ -1,12 +1,13 @@
 package lp.Equipa11_comp2.Entity;
 /**
- * @author beatriz silva
+ * @author beatriz silva 
  */
+
 import jakarta.persistence.*;
 @Entity
 @Table(name = "estudante")
 @PrimaryKeyJoinColumn(name = "id_estudante")
-public class Estudante {
+public class Estudante extends Utilizador {
 	private int numeroEstudante;
     private String curso;
 
