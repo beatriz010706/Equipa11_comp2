@@ -13,6 +13,7 @@ import lp.Equipa11_comp2.Service.UtilizadorService;
 
 // Controller = recebe pedidos HTTP e devolve respostas.
 // Aqui usamos o Service + Mapper para criar o fluxo completo.
+
 @RestController
 @RequestMapping("/utilizador")
 public class UtilizadorController {
@@ -25,7 +26,7 @@ public class UtilizadorController {
 
     // Endpoint para registar um utilizador
     @PostMapping("/registar")
-    public ResponseEntity<?> registar(@RequestBody Utilizador dto) {
+    public ResponseEntity<?> registar(@RequestBody UtilizadorDTO dto) {
         Utilizador novo = service.registar(dto);
         return ResponseEntity.ok(mapper.toDTO(novo));
     }
@@ -34,11 +35,9 @@ public class UtilizadorController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
         Utilizador u = service.login(email, password);
-
-        if (u == null) {
+        if(u == null) {
             return ResponseEntity.status(401).body("Email ou password incorretos");
         }
-
         return ResponseEntity.ok(mapper.toDTO(u));
     }
 
