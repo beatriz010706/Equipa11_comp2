@@ -3,7 +3,7 @@ package lp.Equipa11_comp2.Entity;
  * @author beatriz silva
  */
 
-import jakarta.persistence.*;
+import jakarta.persistence.*; 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
