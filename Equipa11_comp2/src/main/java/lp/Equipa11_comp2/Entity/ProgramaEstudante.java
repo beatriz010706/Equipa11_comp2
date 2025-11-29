@@ -1,4 +1,4 @@
-package lp.Equipa11_comp2.Entity;
+	package lp.Equipa11_comp2.Entity;
 /**
  * @author diogo garcia
  */

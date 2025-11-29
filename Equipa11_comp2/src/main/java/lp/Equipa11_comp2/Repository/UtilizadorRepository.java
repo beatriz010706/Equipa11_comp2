@@ -2,8 +2,8 @@ package lp.Equipa11_comp2.Repository;
 /**
  * @author beatriz silva
  */
-import org.springframework.data.jpa.repository.JpaRepository; 
-import lp.Equipa11_comp2.Entity.Utilizador;
+import org.springframework.data.jpa.repository.JpaRepository;  
+import lp.Equipa11_comp2.Entity.*;
 import java.util.Optional;
 
 //Repository = interface que permite aceder à base de dados
