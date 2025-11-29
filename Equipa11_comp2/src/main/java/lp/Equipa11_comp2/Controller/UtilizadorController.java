@@ -2,14 +2,14 @@ package lp.Equipa11_comp2.Controller;
 /**
  * @author beatriz silva
  */
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import lp.Equipa11_comp2.DTO.UtilizadorDTO;
-import lp.Equipa11_comp2.Entity.Utilizador;
-import lp.Equipa11_comp2.Mapper.UtilizadorMapper;
-import lp.Equipa11_comp2.Service.UtilizadorService;
+import lp.Equipa11_comp2.DTO.*;
+import lp.Equipa11_comp2.Entity.*;
+import lp.Equipa11_comp2.Mapper.*;
+import lp.Equipa11_comp2.Service.*;
 
 // Controller = recebe pedidos HTTP e devolve respostas.
 // Aqui usamos o Service + Mapper para criar o fluxo completo.

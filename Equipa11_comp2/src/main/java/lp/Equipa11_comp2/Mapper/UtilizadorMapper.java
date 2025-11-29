@@ -2,12 +2,10 @@ package lp.Equipa11_comp2.Mapper;
 /**
  * @author beatriz silva
  */
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component; 
 
-import lp.Equipa11_comp2.Entity.Estudante;
-import lp.Equipa11_comp2.Entity.Parceiro;
-import lp.Equipa11_comp2.Entity.Utilizador;
-import lp.Equipa11_comp2.DTO.UtilizadorDTO;
+import lp.Equipa11_comp2.Entity.*;
+import lp.Equipa11_comp2.DTO.*;
 
 // Mapper = classe que converte a entidade para DTO e vice-versa
 // Muito útil para não expor passwords ou dados sensíveis
