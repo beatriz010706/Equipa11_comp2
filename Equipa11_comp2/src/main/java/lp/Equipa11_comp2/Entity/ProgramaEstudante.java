@@ -1,49 +1,41 @@
-	package lp.Equipa11_comp2.Entity;
-/**
- * @author diogo garcia
- */
+package lp.Equipa11_comp2.Entity;
+
 import jakarta.persistence.*;
-import java.time.*;
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "programa_estudante")
 public class ProgramaEstudante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProgramaEstudante;
-
-    @ManyToOne
-    @JoinColumn(name = "id_estudante")
-    private Estudante estudante; // 1 estudante → vários registos ao longo dos anos (OK)
+    private Long id;
 
     private LocalDate dataInicio;
     private LocalDate dataFim;
-
     private int horasFeitas;
-
     private boolean emitirDiploma;
 
-    // -----------------------------
-    //  CONSTRUTORES
-    // -----------------------------
+    @ManyToOne
+    @JoinColumn(name = "id_estudante")
+    private Estudante estudante;
 
-    public ProgramaEstudante() {}
+    public ProgramaEstudante() {
+        this.horasFeitas = 0;
+        this.emitirDiploma = false;
+    }
 
-    public ProgramaEstudante(Estudante estudante, LocalDate dataInicio) {
-        this.estudante = estudante;
+    public ProgramaEstudante(LocalDate dataInicio, LocalDate dataFim) {
         this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
         this.horasFeitas = 0;
         this.emitirDiploma = false;
     }
 
     // -----------------------------
-    //  GETTERS E SETTERS
+    // Getters e Setters
     // -----------------------------
-
-    public Long getIdProgramaEstudante() { return idProgramaEstudante; }
-
-    public Estudante getEstudante() { return estudante; }
-    public void setEstudante(Estudante estudante) { this.estudante = estudante; }
+    public Long getId() { return id; }
 
     public LocalDate getDataInicio() { return dataInicio; }
     public void setDataInicio(LocalDate dataInicio) { this.dataInicio = dataInicio; }
@@ -57,57 +49,35 @@ public class ProgramaEstudante {
     public boolean isEmitirDiploma() { return emitirDiploma; }
     public void setEmitirDiploma(boolean emitirDiploma) { this.emitirDiploma = emitirDiploma; }
 
+    public Estudante getEstudante() { return estudante; }
+    public void setEstudante(Estudante estudante) { this.estudante = estudante; }
+
     // -----------------------------
-    //  MÉTODOS PEDIDOS
+    // Métodos de negócio simples
     // -----------------------------
 
-    /**
-     * Adiciona horas ao programa do estudante.
-     */
     public void adicionarHoras(int horas) {
-        if (horas > 0) {
-            this.horasFeitas += horas;
-
-            // verifica se já pode emitir diploma
-            if (this.horasFeitas >= 30) {
-                this.emitirDiploma = true;
-            }
-        }
+        this.horasFeitas += horas;
     }
-    /**
-     * Marca o programa como concluído.
-     * A dataFim é colocada no dia atual.
-     */
+
     public void concluirPrograma() {
-        this.dataFim = LocalDate.now();
-
-        // Atualiza o estado do diploma
+        // marca como concluído apenas se tiver horas >= 30
         if (this.horasFeitas >= 30) {
-            this.emitirDiploma = true;
+            emitirDiploma = true;
         }
     }
-    /**
-     * Permite emitir diploma apenas se tiver >= 30 horas.
-     */
+
     public boolean emitirDiploma() {
         return this.horasFeitas >= 30;
     }
 
-    /**
-     * Retorna o progresso do estudante (0 a 100%).
-     * Considera 30 horas como objetivo mínimo.
-     */
     public double getProgresso() {
-        double progresso = (double) horasFeitas / 30.0 * 100.0;
-        return Math.min(progresso, 100.0);
+        return (this.horasFeitas / 30.0) * 100; // progresso em %
     }
-    /**
-     * Cancela a participação do estudante.
-     * Remove dataFim e zera horas.
-     */
+
     public void cancelarParticipacao() {
-        this.dataFim = null;
         this.horasFeitas = 0;
         this.emitirDiploma = false;
     }
 }
+
