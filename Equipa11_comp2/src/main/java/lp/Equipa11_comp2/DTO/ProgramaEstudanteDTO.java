@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.DTO;
-
+/**
+ * @author diogo garcia
+ */
 import java.time.LocalDate;
 
 public class ProgramaEstudanteDTO {

@@ -1,4 +1,7 @@
 package lp.Equipa11_comp2.Controller;
+/**
+ * @author diogo garcia
+ */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

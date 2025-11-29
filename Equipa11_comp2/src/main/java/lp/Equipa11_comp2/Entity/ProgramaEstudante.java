@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Entity;
-
+/**
+ * @author diogo garcia
+ */
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
