@@ -3,8 +3,8 @@ package lp.Equipa11_comp2.Mapper;
  * @author beatriz silva
  */
 
-import org.springframework.stereotype.Component;
-import lp.Equipa11_comp2.DTO.EstudanteDTO;
+import org.springframework.stereotype.Component; 
+import lp.Equipa11_comp2.DTO.*;
 import lp.Equipa11_comp2.Entity.*;
 
 @Component

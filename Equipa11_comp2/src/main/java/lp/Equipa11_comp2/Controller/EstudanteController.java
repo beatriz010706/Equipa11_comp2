@@ -3,13 +3,13 @@ package lp.Equipa11_comp2.Controller;
  * @author beatriz silva
  */
 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;   
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import lp.Equipa11_comp2.DTO.EstudanteDTO;
+import lp.Equipa11_comp2.DTO.*;
 import lp.Equipa11_comp2.Entity.*;
-import lp.Equipa11_comp2.Mapper.EstudanteMapper;
+import lp.Equipa11_comp2.Mapper.*;
 import lp.Equipa11_comp2.Service.*;
 
 import java.util.List;
