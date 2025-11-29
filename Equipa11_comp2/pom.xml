@@ -13,7 +13,7 @@
 	<artifactId>Equipa11_comp2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Equipa11_comp2</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Componente 2 do projeto de LP</description>
 	<url/>
 
 	<properties>

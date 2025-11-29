@@ -3,6 +3,9 @@ package lp.Equipa11_comp2.Entity;
  * @author beatriz silva 
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 @Entity
 @Table(name = "estudante")

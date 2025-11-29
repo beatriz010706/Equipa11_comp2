@@ -2,7 +2,7 @@ package lp.Equipa11_comp2.Service;
 /**
  * @author beatriz silva
  */
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service;
 
 import lp.Equipa11_comp2.DTO.UtilizadorDTO;
