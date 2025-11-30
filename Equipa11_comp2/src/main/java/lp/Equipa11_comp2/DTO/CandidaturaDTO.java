@@ -2,12 +2,14 @@ package lp.Equipa11_comp2.DTO;
 
 import lp.Equipa11_comp2.Entity.Estado;
 import lp.Equipa11_comp2.Entity.Estudante;
+import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 
 
 public class CandidaturaDTO {
 	private long idCandidatura;
 	private String dataSubmissao;
 	private Estudante estudante;
+	private ProgramaVoluntariado programaVoluntariado;
 	private Estado.EstadoEnum estado;
 	
 	public CandidaturaDTO() {}
@@ -18,10 +20,11 @@ public class CandidaturaDTO {
 	 * @param estudante
 	 * @param estado
 	 */
-	public CandidaturaDTO(long idCandidatura, String dataSubmissao, Estudante estudante, Estado.EstadoEnum estado) {
+	public CandidaturaDTO(long idCandidatura, String dataSubmissao, Estudante estudante,ProgramaVoluntariado programaVoluntariado ,Estado.EstadoEnum estado) {
 		this.idCandidatura = idCandidatura;
 		this.dataSubmissao = dataSubmissao;
 		this.estudante = estudante;
+		this.programaVoluntariado = programaVoluntariado;
 		this.estado = estado;
 	}
 
@@ -47,6 +50,16 @@ public class CandidaturaDTO {
 
 	public void setEstudante(Estudante estudante) {
 		this.estudante = estudante;
+	}
+	
+	
+
+	public ProgramaVoluntariado getProgramaVoluntariado() {
+		return programaVoluntariado;
+	}
+
+	public void setProgramaVoluntariado(ProgramaVoluntariado programaVoluntariado) {
+		this.programaVoluntariado = programaVoluntariado;
 	}
 
 	public Estado.EstadoEnum getEstado() {
