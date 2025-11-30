@@ -1,21 +1,12 @@
-package lp.Equipa11_comp2.Entity;
+package lp.Equipa11_comp2.DTO;
 
 /**
  * @author miguel silva
  */
 
-import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+public class ProgramaVoluntariadoDTO {
 
-@Entity
-@Table(name = "programa_voluntariado")
-public class ProgramaVoluntariado {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String titulo;
     private String descricao;
     private int horasServico;
@@ -23,28 +14,22 @@ public class ProgramaVoluntariado {
     private int vagas;
     private int vagasOcupadas;
 
-    @ManyToOne
-    @JoinColumn(name = "id_parceiro")
-    private Parceiro parceiro;
+    public ProgramaVoluntariadoDTO() {}
 
-    @OneToMany(mappedBy = "programaVoluntariado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Candidatura> candidaturas = new ArrayList<>();
-
-    public ProgramaVoluntariado() {}
-
-    public ProgramaVoluntariado(String titulo, String descricao, int horasServico, String local, int vagas) {
+    public ProgramaVoluntariadoDTO(Long id, String titulo, String descricao, int horasServico, String local, int vagas, int vagasOcupadas) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.horasServico = horasServico;
         this.local = local;
         this.vagas = vagas;
-        this.vagasOcupadas = 0;
+        this.vagasOcupadas = vagasOcupadas;
     }
 
     // Getters e Setters
     public Long getId() { return id; }
-    public void setId(Long idPrograma) {} 
-    
+    public void setId(Long id) { this.id = id; }
+
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
 
@@ -62,12 +47,4 @@ public class ProgramaVoluntariado {
 
     public int getVagasOcupadas() { return vagasOcupadas; }
     public void setVagasOcupadas(int vagasOcupadas) { this.vagasOcupadas = vagasOcupadas; }
-
-    public Parceiro getParceiro() { return parceiro; }
-    public void setParceiro(Parceiro parceiro) { this.parceiro = parceiro; }
-
-    public List<Candidatura> getCandidaturas() { return candidaturas; }
-    public void setCandidaturas(List<Candidatura> candidaturas) { this.candidaturas = candidaturas; }
-
-	
 }
