@@ -21,5 +21,6 @@ public class CandidaturaMapper {
 		c.setProgramaVoluntariado(c.getProgramaVoluntariado());
 		c.setEstado(c.getEstado());
 		return c;
+		
 	}
 }
