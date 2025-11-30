@@ -1,8 +1,11 @@
 package lp.Equipa11_comp2.Mapper;
 
+import org.springframework.stereotype.Component;
+
 import lp.Equipa11_comp2.DTO.EstadoDTO;
 import lp.Equipa11_comp2.Entity.Estado;
 
+@Component
 public class EstadoMapper {
 	
 	public EstadoDTO toDTO (Estado e) {
