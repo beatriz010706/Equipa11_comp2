@@ -1,6 +1,7 @@
 package lp.Equipa11_comp2.Entity;
 
 import jakarta.persistence.*;
+import lp.Equipa11_comp2.Entity.Estado.EstadoEnum;
 
 @Entity
 @Table(name = "Candidatura")
@@ -21,14 +22,14 @@ public class Candidatura {
     @JoinColumn(name = "idProgVoluntariado")  // FK to ProgramaVoluntariado
     private ProgramaVoluntariado programaVoluntariado;
 
-    @ManyToOne
-    @JoinColumn(name = "idEstado")  // FK to Estado
-    private Estado estado;
+    @Enumerated(EnumType.STRING)
+    private Estado.EstadoEnum estado;
+
 
     // ====== CONSTRUCTORS ======
     public Candidatura() { }
 
-    public Candidatura(long idCandidatura, String dataSubmissao, Estudante estudante, ProgramaVoluntariado programaVoluntariado, Estado estado) {
+    public Candidatura(long idCandidatura, String dataSubmissao, Estudante estudante, ProgramaVoluntariado programaVoluntariado, EstadoEnum estado) {
         this.idCandidatura = idCandidatura;
         this.dataSubmissao = dataSubmissao;
         this.estudante = estudante;
@@ -65,11 +66,11 @@ public class Candidatura {
         this.programaVoluntariado = programaVoluntariado;
     }
 
-    public Estado getEstado() {
+    public EstadoEnum getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(EstadoEnum estado) {
         this.estado = estado;
     }
 
