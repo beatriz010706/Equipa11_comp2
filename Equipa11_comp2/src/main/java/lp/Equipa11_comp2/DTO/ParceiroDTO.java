@@ -1,16 +1,26 @@
 package lp.Equipa11_comp2.DTO;
-/**
- * @author beatriz silva
- */
+
+import java.util.List;
+
 public class ParceiroDTO {
 
     private Long id;
     private String nome;
-    private int idade;
     private String email;
-    private Long idTipo;
+    private String password;
     private String local;
-    private String tipoUtilizador = "Parceiro"; // sempre Parceiro
+    private List<String> programas; // Lista de títulos dos programas
+
+    public ParceiroDTO() {}
+
+    public ParceiroDTO(Long id, String nome, String email, String password, String local, List<String> programas) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.password = password;
+        this.local = local;
+        this.programas = programas;
+    }
 
     // Getters e Setters
     public Long getId() { return id; }
@@ -19,17 +29,16 @@ public class ParceiroDTO {
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 
-    public int getIdade() { return idade; }
-    public void setIdade(int idade) { this.idade = idade; }
-
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public Long getIdTipo() { return idTipo; }
-    public void setIdTipo(Long idTipo) { this.idTipo = idTipo; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }
 
-    public String getTipoUtilizador() { return tipoUtilizador; }
-}//fim classe
+    public List<String> getProgramas() { return programas; }
+    public void setProgramas(List<String> programas) { this.programas = programas; }
+}
+

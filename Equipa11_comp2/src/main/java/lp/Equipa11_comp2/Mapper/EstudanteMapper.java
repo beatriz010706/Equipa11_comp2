@@ -1,39 +1,39 @@
 package lp.Equipa11_comp2.Mapper;
-/**
- * @author beatriz silva
- */
 
-import org.springframework.stereotype.Component; 
+import org.springframework.stereotype.Component;
 import lp.Equipa11_comp2.DTO.*;
 import lp.Equipa11_comp2.Entity.*;
 
 @Component
 public class EstudanteMapper {
 
-	//DTO -> Entity
-	public Estudante toEntity(EstudanteDTO dto, ProgramaEstudante programa) {
+    public EstudanteDTO toDTO(Estudante e) {
+        if (e == null) return null;
+
+        int totalCandidaturas = (e.getCandidaturas() != null) ? e.getCandidaturas().size() : 0;
+        int programasConcluidos = (e.getProgramasEstudante() != null) ? e.getProgramasEstudante().size() : 0;
+
+        return new EstudanteDTO(
+                e.getIdUtilizador(),
+                e.getNome(),
+                e.getEmail(),
+                e.getPassword(),
+                e.getCurso(),
+                e.getNumeroAluno(),
+                totalCandidaturas,
+                programasConcluidos
+        );
+    }
+
+    public Estudante toEntity(EstudanteDTO dto) {
+        if (dto == null) return null;
+
         Estudante e = new Estudante();
         e.setNome(dto.getNome());
-        e.setIdade(dto.getIdade());
         e.setEmail(dto.getEmail());
-        e.setNumeroEstudante(dto.getNumeroEstudante());
+        e.setPassword(dto.getPassword());
         e.setCurso(dto.getCurso());
-        e.setPrograma(programa);
+        e.setNumeroAluno(dto.getNumeroAluno());
         return e;
     }
-	
-	// Entity -> DTO
-    public EstudanteDTO toDTO(Estudante e) {
-        EstudanteDTO dto = new EstudanteDTO();
-        dto.setId(e.getIdUtilizador());
-        dto.setNome(e.getNome());
-        dto.setIdade(e.getIdade());
-        dto.setEmail(e.getEmail());
-        dto.setNumeroEstudante(e.getNumeroEstudante());
-        dto.setCurso(e.getCurso());
-        if (e.getPrograma() != null) {
-            dto.setIdPrograma(e.getPrograma().getIdPrograma());
-        }
-        return dto;
-    }
-}//fim classe
+}

@@ -1,38 +1,44 @@
 package lp.Equipa11_comp2.Mapper;
-/**
- * @author beatriz silva
- */
+
 import org.springframework.stereotype.Component;
-import lp.Equipa11_comp2.Entity.*;
+import lp.Equipa11_comp2.Entity.Parceiro;
 import lp.Equipa11_comp2.DTO.ParceiroDTO;
 
-/**
- * Mapper para converter Parceiro <-> DTO
- */
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ParceiroMapper {
 
-    // DTO -> Entity
-    public Parceiro toEntity(ParceiroDTO dto, Tipo tipo) {
-        Parceiro p = new Parceiro();
-        p.setNome(dto.getNome());
-        p.setIdade(dto.getIdade());
-        p.setEmail(dto.getEmail());
-        p.setLocal(dto.getLocal());
-        p.setTipo(tipo);
-        return p;
+    public ParceiroDTO toDTO(Parceiro p) {
+        if (p == null) return null;
+
+        List<String> titulos = new ArrayList<>();
+        if (p.getProgramasVoluntariado() != null) {
+            for (var prog : p.getProgramasVoluntariado()) {
+                titulos.add(prog.getTitulo());
+            }
+        }
+
+        return new ParceiroDTO(
+                p.getIdUtilizador(),
+                p.getNome(),
+                p.getEmail(),
+                p.getPassword(),
+                p.getLocal(),
+                titulos
+        );
     }
 
-    // Entity -> DTO
-    public ParceiroDTO toDTO(Parceiro p) {
-        ParceiroDTO dto = new ParceiroDTO();
-        dto.setId(p.getIdUtilizador());
-        dto.setNome(p.getNome());
-        dto.setIdade(p.getIdade());
-        dto.setEmail(p.getEmail());
-        dto.setLocal(p.getLocal());
-        if (p.getTipo() != null)
-            dto.setIdTipo(p.getTipo().getIdTipo());
-        return dto;
+    public Parceiro toEntity(ParceiroDTO dto) {
+        if (dto == null) return null;
+
+        Parceiro p = new Parceiro();
+        p.setNome(dto.getNome());
+        p.setEmail(dto.getEmail());
+        p.setPassword(dto.getPassword());
+        p.setLocal(dto.getLocal());
+        return p;
     }
-}//fim classe
+}
+

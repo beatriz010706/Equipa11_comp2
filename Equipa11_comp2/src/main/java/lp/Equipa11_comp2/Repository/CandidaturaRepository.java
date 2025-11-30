@@ -8,6 +8,7 @@ import lp.Equipa11_comp2.Entity.*;
 
 @Repository
 public interface CandidaturaRepository extends JpaRepository<Candidatura, Long> {
-	List<Candidatura> findByEstudante(Estudante estudante);
+	// procura todas as candidaturas de um estudante pelo ID do estudante
+    List<Candidatura> findByEstudante_IdUtilizador(Long idUtilizador);
 
 }//fim classe

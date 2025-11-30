@@ -1,7 +1,4 @@
 package lp.Equipa11_comp2.Entity;
-/**
- * @author beatriz silva 
- */
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -12,37 +9,43 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "id_parceiro")
 public class Parceiro extends Utilizador {
 
-    @ManyToOne
-    @JoinColumn(name = "id_tipo")
-    private Tipo tipo;
-
     private String local;
 
+    // 1 Parceiro -> vários ProgramasVoluntariado
     @OneToMany(mappedBy = "parceiro", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProgramaVoluntariado> programas = new ArrayList<>();
+    private List<ProgramaVoluntariado> programasVoluntariado = new ArrayList<>();
 
-    // -----------------------------
-    // CONSTRUTORES
-    // -----------------------------
     public Parceiro() {}
 
-    public Parceiro(String nome, int idade, String email, String password,
-                    Tipo tipo, String local) {
-        super(nome, idade, email, password);
-        this.tipo = tipo;
+    public Parceiro(String nome, String email, String password, String local) {
+        super(nome, email, password);
         this.local = local;
     }
 
-    // -----------------------------
-    // GETTERS E SETTERS
-    // -----------------------------
-    public Tipo getTipo() { return tipo; }
-    public void setTipo(Tipo tipo) { this.tipo = tipo; }
-
+    // Getters e Setters
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }
 
-    public List<ProgramaVoluntariado> getProgramas() { return programas; }
-    public void setProgramas(List<ProgramaVoluntariado> programas) { this.programas = programas; }
+    public List<ProgramaVoluntariado> getProgramasVoluntariado() { return programasVoluntariado; }
+    public void setProgramasVoluntariado(List<ProgramaVoluntariado> programasVoluntariado) { this.programasVoluntariado = programasVoluntariado; }
 
-}//fim classe
+    // -----------------------------
+    // MÉTODOS DO PARCEIRO
+    // -----------------------------
+
+    public void registarPrograma(ProgramaVoluntariado p) {
+        programasVoluntariado.add(p);
+        p.setParceiro(this);
+    }
+
+    public void editarPrograma(ProgramaVoluntariado p, String novoTitulo, int novasHoras) {
+        p.setTitulo(novoTitulo);
+        p.setHorasServico(novasHoras);
+    }
+
+    public void eliminarPrograma(ProgramaVoluntariado p) {
+        programasVoluntariado.remove(p);
+        p.setParceiro(null);
+    }
+}
+

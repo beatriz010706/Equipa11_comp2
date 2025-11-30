@@ -1,49 +1,36 @@
 package lp.Equipa11_comp2.Controller;
-/**
- * @author beatriz silva
- */
-import org.springframework.beans.factory.annotation.Autowired;  
-import org.springframework.http.ResponseEntity;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import lp.Equipa11_comp2.DTO.*;
-import lp.Equipa11_comp2.Entity.*;
-import lp.Equipa11_comp2.Mapper.*;
-import lp.Equipa11_comp2.Service.*;
+import lp.Equipa11_comp2.DTO.UtilizadorDTO;
+import lp.Equipa11_comp2.Entity.Candidatura;
+import lp.Equipa11_comp2.Entity.Utilizador;
+import lp.Equipa11_comp2.Service.UtilizadorService;
 
-// Controller = recebe pedidos HTTP e devolve respostas.
-// Aqui usamos o Service + Mapper para criar o fluxo completo.
+import java.util.List;
 
 @RestController
-@RequestMapping("/utilizador")
+@RequestMapping("/utilizadores")
 public class UtilizadorController {
 
     @Autowired
     private UtilizadorService service;
 
-    @Autowired
-    private UtilizadorMapper mapper;
-
-    // Endpoint para registar um utilizador
     @PostMapping("/registar")
-    public ResponseEntity<?> registar(@RequestBody UtilizadorDTO dto) {
-        Utilizador novo = service.registar(dto);
-        return ResponseEntity.ok(mapper.toDTO(novo));
+    public Utilizador registar(@RequestBody UtilizadorDTO dto) {
+        return service.registar(dto);
     }
 
-    // Endpoint para login
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
-        Utilizador u = service.login(email, password);
-        if(u == null) {
-            return ResponseEntity.status(401).body("Email ou password incorretos");
-        }
-        return ResponseEntity.ok(mapper.toDTO(u));
+    public Utilizador login(@RequestParam String email,
+                            @RequestParam String password) {
+        return service.login(email, password);
     }
 
-    // Endpoint para consultar histórico de candidaturas
-    @GetMapping("/{id}/historico")
-    public ResponseEntity<?> historico(@PathVariable Long id) {
-        return ResponseEntity.ok(service.consultarHistoricoCandidaturas(id));
+    @GetMapping("/{id}/candidaturas")
+    public List<Candidatura> historico(@PathVariable Long id) {
+        return service.consultarHistoricoCandidaturas(id);
     }
 }
+

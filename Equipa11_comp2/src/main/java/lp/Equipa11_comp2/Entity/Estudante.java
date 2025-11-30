@@ -1,44 +1,37 @@
 package lp.Equipa11_comp2.Entity;
-/**
- * @author beatriz silva 
- */
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
 @Entity
 @Table(name = "estudante")
 @PrimaryKeyJoinColumn(name = "id_estudante")
 public class Estudante extends Utilizador {
 
-    private int numeroEstudante;
+    private int numeroAluno;
     private String curso;
 
-    // Lista de candidaturas associadas ao estudante
+    // Lista de candidaturas do estudante
     @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Candidatura> candidaturas = new ArrayList<>();
 
-    // Lista de programas de voluntariado associados ao estudante
-    @ManyToOne
-    @JoinColumn(name = "id_programa") // coluna na tabela estudante
-    private ProgramaEstudante programa;
-    private List<ProgramaEstudante> programas = new ArrayList<>();
+    // Lista de programas do estudante
+    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProgramaEstudante> programasEstudante = new ArrayList<>();
 
-    // Construtor vazio (necessário para JPA)
     public Estudante() {}
 
-    // Construtor completo incluindo campos herdados e específicos
-    public Estudante(String nome, int idade, String email, String password,
-                     int numeroEstudante, String curso) {
-        super(nome, idade, email, password);
-        this.numeroEstudante = numeroEstudante;
+    public Estudante(String nome, String email, String password,
+                     int numeroAluno, String curso) {
+        super(nome, email, password);
+        this.numeroAluno = numeroAluno;
         this.curso = curso;
     }
 
     // Getters e Setters
-    public int getNumeroEstudante() { return numeroEstudante; }
-    public void setNumeroEstudante(int numeroEstudante) { this.numeroEstudante = numeroEstudante; }
+    public int getNumeroAluno() { return numeroAluno; }
+    public void setNumeroAluno(int numeroAluno) { this.numeroAluno = numeroAluno; }
 
     public String getCurso() { return curso; }
     public void setCurso(String curso) { this.curso = curso; }
@@ -46,17 +39,6 @@ public class Estudante extends Utilizador {
     public List<Candidatura> getCandidaturas() { return candidaturas; }
     public void setCandidaturas(List<Candidatura> candidaturas) { this.candidaturas = candidaturas; }
 
-    public List<ProgramaEstudante> getProgramas() { return programas; }
-    public void setProgramas(List<ProgramaEstudante> programas) { this.programas = programas; }
-
-    // Métodos auxiliares para adicionar elementos às listas
-    public void addCandidatura(Candidatura c) {
-        candidaturas.add(c);
-        c.setEstudante(this);
-    }
-
-    public void addPrograma(ProgramaEstudante p) {
-        programas.add(p);
-    }
-
-}//fim da classe
+    public List<ProgramaEstudante> getProgramasEstudante() { return programasEstudante; }
+    public void setProgramasEstudante(List<ProgramaEstudante> programasEstudante) { this.programasEstudante = programasEstudante; }
+}
