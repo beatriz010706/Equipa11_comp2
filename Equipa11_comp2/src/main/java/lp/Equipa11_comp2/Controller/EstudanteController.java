@@ -18,10 +18,10 @@ public class EstudanteController {
     }
 
     @PostMapping("/login")
-    public EstudanteDTO login(@RequestParam String email,
-                              @RequestParam String password) {
-        return service.login(email, password);
+    public EstudanteDTO login(@RequestBody EstudanteDTO dto) {
+        return service.login(dto.getEmail(), dto.getPassword());
     }
+
 
     @GetMapping("/{id}/historico")
     public String consultarHistorico(@PathVariable Long id) {

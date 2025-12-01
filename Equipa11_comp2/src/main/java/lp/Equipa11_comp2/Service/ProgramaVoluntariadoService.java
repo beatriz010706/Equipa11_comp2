@@ -7,6 +7,7 @@ package lp.Equipa11_comp2.Service;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Service;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
+import lp.Equipa11_comp2.DTO.ParceiroDTO;
 import lp.Equipa11_comp2.Entity.*;
 import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 import lp.Equipa11_comp2.Repository.CandidaturaRepository;
@@ -40,7 +41,7 @@ public class ProgramaVoluntariadoService {
     public List<Candidatura> listarCandidaturasPendentes(ProgramaVoluntariado p) {
         List<Candidatura> pendentes = new ArrayList<>();
         for (Candidatura c : p.getCandidaturas()) {
-            if (c.getEstado() == Estado.EstadoEnum.EM_ANDAMENTO) {
+            if (c.getEstado() == Estado.EM_ANDAMENTO) {
                 pendentes.add(c);
             }
         }
@@ -56,10 +57,11 @@ public class ProgramaVoluntariadoService {
     public List<Candidatura> listarParticipantes(ProgramaVoluntariado p) {
         List<Candidatura> aprovados = new ArrayList<>();
         for (Candidatura c : p.getCandidaturas()) {
-        	if (c.getEstado() == Estado.EstadoEnum.ACEITE) {
+        	if (c.getEstado() == Estado.ACEITE) {
                 aprovados.add(c);
             }
         }
         return aprovados;
     }
+
 }

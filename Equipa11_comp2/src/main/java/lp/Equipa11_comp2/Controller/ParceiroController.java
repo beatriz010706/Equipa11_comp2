@@ -42,10 +42,15 @@ public class ParceiroController {
     }
 
     // Eliminar programa
-    @PostMapping("/{id}/programa/eliminar")
-    public void eliminarPrograma(@PathVariable Long id, @RequestBody ProgramaVoluntariado prog) {
+    @DeleteMapping("/{id}/programa/{progId}")
+    public void eliminarPrograma(@PathVariable Long id, @PathVariable Long progId) {
         Parceiro p = service.findById(id);
-        if (p != null) service.eliminarPrograma(p, prog);
+        if (p != null) {
+            // Criar objeto ProgramaVoluntariado apenas com o ID
+            ProgramaVoluntariado prog = new ProgramaVoluntariado();
+            prog.setId(progId);
+            service.eliminarPrograma(p, prog);
+        }
     }
 }
 
