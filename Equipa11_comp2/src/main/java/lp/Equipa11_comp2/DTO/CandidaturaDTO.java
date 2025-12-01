@@ -1,72 +1,41 @@
 package lp.Equipa11_comp2.DTO;
 
 import lp.Equipa11_comp2.Entity.Estado;
-import lp.Equipa11_comp2.Entity.Estudante;
-import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 
-
+/**
+ * DTO simples para Candidatura
+ */
 public class CandidaturaDTO {
-	private long idCandidatura;
-	private String dataSubmissao;
-	private Estudante estudante;
-	private ProgramaVoluntariado programaVoluntariado;
-	private Estado.EstadoEnum estado;
-	
-	public CandidaturaDTO() {}
 
-	/**
-	 * @param idCandidatura
-	 * @param dataSubmissao
-	 * @param estudante
-	 * @param estado
-	 */
-	public CandidaturaDTO(long idCandidatura, String dataSubmissao, Estudante estudante,ProgramaVoluntariado programaVoluntariado ,Estado.EstadoEnum estado) {
-		this.idCandidatura = idCandidatura;
-		this.dataSubmissao = dataSubmissao;
-		this.estudante = estudante;
-		this.programaVoluntariado = programaVoluntariado;
-		this.estado = estado;
-	}
+    private Long id;
+    private String dataSubmissao;
+    private Long estudanteId;
+    private Long programaId;
+    private Estado estado;
 
-	public long getIdCandidatura() {
-		return idCandidatura;
-	}
+    public CandidaturaDTO() {}
 
-	public void setIdCandidatura(long idCandidatura) {
-		this.idCandidatura = idCandidatura;
-	}
+    public CandidaturaDTO(Long id, String dataSubmissao, Long estudanteId, Long programaId, Estado estado) {
+        this.id = id;
+        this.dataSubmissao = dataSubmissao;
+        this.estudanteId = estudanteId;
+        this.programaId = programaId;
+        this.estado = estado;
+    }
 
-	public String getDataSubmissao() {
-		return dataSubmissao;
-	}
+    // Getters / Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-	public void setDataSubmissao(String dataSubmissao) {
-		this.dataSubmissao = dataSubmissao;
-	}
+    public String getDataSubmissao() { return dataSubmissao; }
+    public void setDataSubmissao(String dataSubmissao) { this.dataSubmissao = dataSubmissao; }
 
-	public Estudante getEstudante() {
-		return estudante;
-	}
+    public Long getEstudanteId() { return estudanteId; }
+    public void setEstudanteId(Long estudanteId) { this.estudanteId = estudanteId; }
 
-	public void setEstudante(Estudante estudante) {
-		this.estudante = estudante;
-	}
-	
-	
+    public Long getProgramaId() { return programaId; }
+    public void setProgramaId(Long programaId) { this.programaId = programaId; }
 
-	public ProgramaVoluntariado getProgramaVoluntariado() {
-		return programaVoluntariado;
-	}
-
-	public void setProgramaVoluntariado(ProgramaVoluntariado programaVoluntariado) {
-		this.programaVoluntariado = programaVoluntariado;
-	}
-
-	public Estado.EstadoEnum getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado.EstadoEnum estado) {
-		this.estado = estado;
-	}
+    public Estado getEstado() { return estado; }
+    public void setEstado(Estado estado) { this.estado = estado; }
 }
