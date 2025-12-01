@@ -1,12 +1,11 @@
 package lp.Equipa11_comp2.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.*;
 
-import lp.Equipa11_comp2.DTO.UtilizadorDTO;
-import lp.Equipa11_comp2.Entity.Candidatura;
-import lp.Equipa11_comp2.Entity.Utilizador;
-import lp.Equipa11_comp2.Service.UtilizadorService;
+import lp.Equipa11_comp2.DTO.*;
+import lp.Equipa11_comp2.Entity.*;
+import lp.Equipa11_comp2.Service.*;
 
 import java.util.List;
 

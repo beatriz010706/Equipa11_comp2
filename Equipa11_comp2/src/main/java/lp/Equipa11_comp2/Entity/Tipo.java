@@ -45,26 +45,61 @@ public class Tipo {
     public List<ProgramaVoluntariado> getTipoPV() { return tipoPV; }
     public void setTipoPV(List<ProgramaVoluntariado> tipoPV) { this.tipoPV = tipoPV; }
 
-    // -----------------------------
-    // Métodos para gerir listas
-    // -----------------------------
-    public void adicionarParceiro(Parceiro p) {
-        tipoParceiros.add(p);
-        p.setTipo(this);
-    }
 
-    public void removerParceiro(Parceiro p) {
-        tipoParceiros.remove(p);
-        p.setTipo(null);
-    }
+ // Métodos para gerir listas
 
-    public void adicionarProgramaVoluntariado(ProgramaVoluntariado p) {
-        tipoPV.add(p);
-        p.setTipo(this);
-    }
+ // ----- Parceiros -----
+ public void adicionarParceiro(Parceiro p) {
+     if (p == null) return;
 
-    public void removerProgramaVoluntariado(ProgramaVoluntariado p) {
-        tipoPV.remove(p);
-        p.setTipo(null);
-    }
+     // Impede duplicados
+     if (!tipoParceiros.contains(p)) {
+         tipoParceiros.add(p);
+     }
+
+     // Mantém a relação bidirecional consistente
+     if (p.getTipo() != this) {
+         p.setTipo(this);
+     }
+ }
+
+ public void removerParceiro(Parceiro p) {
+     if (p == null) return;
+
+     if (tipoParceiros.contains(p)) {
+         tipoParceiros.remove(p);
+     }
+
+     // Apenas remove se estiver associado a este Tipo
+     if (p.getTipo() == this) {
+         p.setTipo(null);
+     }
+ }
+
+
+ // ----- Programas Voluntariado -----
+ public void adicionarProgramaVoluntariado(ProgramaVoluntariado p) {
+     if (p == null) return;
+
+     if (!tipoPV.contains(p)) {
+         tipoPV.add(p);
+     }
+
+     if (p.getTipo() != this) {
+         p.setTipo(this);
+     }
+ }
+
+ public void removerProgramaVoluntariado(ProgramaVoluntariado p) {
+     if (p == null) return;
+
+     if (tipoPV.contains(p)) {
+         tipoPV.remove(p);
+     }
+
+     if (p.getTipo() == this) {
+         p.setTipo(null);
+     }
+ }
+
 }

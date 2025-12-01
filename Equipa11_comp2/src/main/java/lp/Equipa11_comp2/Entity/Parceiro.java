@@ -14,6 +14,10 @@ public class Parceiro extends Utilizador {
     // 1 Parceiro -> vários ProgramasVoluntariado
     @OneToMany(mappedBy = "parceiro", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProgramaVoluntariado> programasVoluntariado = new ArrayList<>();
+    
+    @ManyToOne
+    @JoinColumn(name = "id_tipo")
+    private Tipo tipo;
 
     public Parceiro() {}
 
@@ -25,6 +29,9 @@ public class Parceiro extends Utilizador {
     // Getters e Setters
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }
+    
+    public Tipo getTipo() { return tipo; }
+    public void setTipo(Tipo tipo) { this.tipo = tipo; }
 
     public List<ProgramaVoluntariado> getProgramasVoluntariado() { return programasVoluntariado; }
     public void setProgramasVoluntariado(List<ProgramaVoluntariado> programasVoluntariado) { this.programasVoluntariado = programasVoluntariado; }

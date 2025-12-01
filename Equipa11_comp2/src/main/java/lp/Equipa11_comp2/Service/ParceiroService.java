@@ -8,6 +8,7 @@ import lp.Equipa11_comp2.Entity.Parceiro;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 import lp.Equipa11_comp2.Mapper.ParceiroMapper;
 import lp.Equipa11_comp2.Repository.ParceiroRepository;
+import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 
 @Service
 public class ParceiroService {
@@ -17,6 +18,12 @@ public class ParceiroService {
 
     @Autowired
     private ParceiroMapper mapper;
+    
+    @Autowired
+    private ProgramaVoluntariadoRepository programaRepo;
+
+    @Autowired
+    private ParceiroRepository parceiroRepo;
 
     // Registar parceiro
     public ParceiroDTO registar(ParceiroDTO dto) {
@@ -51,8 +58,18 @@ public class ParceiroService {
     }
 
     public void eliminarPrograma(Parceiro p, ProgramaVoluntariado prog) {
-        p.eliminarPrograma(prog);
-        repo.save(p);
+        // Buscar programa pelo ID enviado
+        ProgramaVoluntariado programa = programaRepo.findById(prog.getId())
+                .orElseThrow(() -> new RuntimeException("Programa não encontrado"));
+
+        // Remover do parceiro (se houver relação bidirecional)
+        if (p.getProgramasVoluntariado() != null) {
+            p.getProgramasVoluntariado().remove(programa);
+        }
+
+        // Deletar do banco
+        programaRepo.delete(programa);
+
     }
 }
 
