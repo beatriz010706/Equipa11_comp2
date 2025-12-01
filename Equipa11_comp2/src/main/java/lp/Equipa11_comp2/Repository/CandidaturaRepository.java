@@ -1,14 +1,15 @@
 package lp.Equipa11_comp2.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import lp.Equipa11_comp2.Entity.Candidatura;
+
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.stereotype.Repository;
-import lp.Equipa11_comp2.Entity.*;
-
-@Repository
 public interface CandidaturaRepository extends JpaRepository<Candidatura, Long> {
-	// procura todas as candidaturas de um estudante pelo ID do estudante
+
+    // Buscar candidaturas de um estudante usando o id do utilizador
     List<Candidatura> findByEstudante_IdUtilizador(Long idUtilizador);
 
-}//fim classe
+    // Buscar candidaturas associadas a um programa de voluntariado
+    List<Candidatura> findByProgramaVoluntariado_Id(Long programaId);
+}
