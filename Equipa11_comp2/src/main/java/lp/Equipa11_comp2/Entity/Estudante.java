@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Entity;
-
+/**
+ * @author beatriz silva
+ */
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

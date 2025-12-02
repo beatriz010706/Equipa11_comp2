@@ -1,6 +1,6 @@
 package lp.Equipa11_comp2.Mapper;
 /**
- * @author diogo garcia
+ * @author diogo garcia 
  */
 import org.springframework.stereotype.Component;
 import lp.Equipa11_comp2.DTO.ProgramaEstudanteDTO;

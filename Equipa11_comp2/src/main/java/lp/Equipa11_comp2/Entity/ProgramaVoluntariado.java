@@ -56,7 +56,7 @@ public class ProgramaVoluntariado {
     public void setDescricao(String descricao) { this.descricao = descricao; }
 
     public int getHorasServico() { return horas_servico; }
-    public void setHorasServico(int horasServico) { this.horas_servico = horas_servico; }
+    public void setHorasServico(int horas_servico) { this.horas_servico = horas_servico; }
 
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }

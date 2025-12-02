@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Entity;
-
+/**
+ * @author gonçalo silva
+ */
 import jakarta.persistence.*;
 
 /**

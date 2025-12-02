@@ -1,9 +1,8 @@
 package lp.Equipa11_comp2.Entity;
-
 /**
- * Estado do processo de candidatura.
- * Simples enum: não é uma entidade JPA.
+ * @author gonçalo silva
  */
+//Estado do processo de candidatura.
 public enum Estado {
     ACEITE,
     EM_ANDAMENTO,

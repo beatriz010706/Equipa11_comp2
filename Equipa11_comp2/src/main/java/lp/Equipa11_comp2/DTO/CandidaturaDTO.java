@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.DTO;
-
+/**
+ * @author gonçalo silva
+ */
 import lp.Equipa11_comp2.Entity.Estado;
 
 /**

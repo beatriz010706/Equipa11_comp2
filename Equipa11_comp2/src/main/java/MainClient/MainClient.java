@@ -1,5 +1,6 @@
 package MainClient;
-import org.springframework.http.*;
+
+import org.springframework.http.*; 
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class MainClient {
     private static final String BASE_URL = "http://localhost:8080";
     private static final RestTemplate rest = new RestTemplate();
-    private static final Scanner sc = new Scanner(System.in);
+    private static final Scanner ler = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
@@ -16,7 +17,7 @@ public class MainClient {
             System.out.println("2. Menu Parceiro");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
-            int option = Integer.parseInt(sc.nextLine());
+            int option = Integer.parseInt(ler.nextLine());
 
             switch (option) {
                 case 1 -> menuEstudante();
@@ -43,7 +44,7 @@ public class MainClient {
             System.out.println("8. Candidatar-se a um Programa"); 
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
-            int option = Integer.parseInt(sc.nextLine());
+            int option = Integer.parseInt(ler.nextLine());
 
             switch (option) {
                 case 1 -> registarEstudante();
@@ -66,15 +67,15 @@ public class MainClient {
             System.out.println("1. Registar");
             System.out.println("2. Login");
             System.out.println("3. Registar Programa");
-            System.out.println("4. Editar Programa");
-            System.out.println("5. Eliminar Programa");
+            System.out.println("4. Editar Programa"); //metodo com erro (404)
+            System.out.println("5. Eliminar Programa"); // metodo com erro (500)
             System.out.println("6. Listar todas candidaturas");
             System.out.println("7. Listar candidaturas de um programa");
             System.out.println("8. Aprovar candidatura");
             System.out.println("9. Rejeitar candidatura");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
-            int option = Integer.parseInt(sc.nextLine());
+            int option = Integer.parseInt(ler.nextLine());
 
             switch (option) {
                 case 1 -> registarParceiro();
@@ -94,11 +95,11 @@ public class MainClient {
 
 // ------------------- MÉTODOS ESTUDANTE -------------------
     private static void registarEstudante() {
-        System.out.print("Nome: "); String nome = sc.nextLine();
-        System.out.print("Email: "); String email = sc.nextLine();
-        System.out.print("Password: "); String password = sc.nextLine();
-        System.out.print("Curso: "); String curso = sc.nextLine();
-        System.out.print("Número de aluno: "); int numeroAluno = Integer.parseInt(sc.nextLine());
+        System.out.print("Nome: "); String nome = ler.nextLine();
+        System.out.print("Email: "); String email = ler.nextLine();
+        System.out.print("Password: "); String password = ler.nextLine();
+        System.out.print("Curso: "); String curso = ler.nextLine();
+        System.out.print("Número de aluno: "); int numeroAluno = Integer.parseInt(ler.nextLine());
 
         String json = """
         {
@@ -109,21 +110,25 @@ public class MainClient {
           "numeroAluno": %d
         }
         """.formatted(nome, email, password, curso, numeroAluno);
-
+        
+     // Cria um objeto HttpHeaders para configurar os cabeçalhos da requisição HTTP
         HttpHeaders headers = new HttpHeaders();
+     // Define o Content-Type como JSON - informa ao servidor que o corpo da requisição é JSON
         headers.setContentType(MediaType.APPLICATION_JSON);
+     // Cria um HttpEntity que encapsula o JSON do estudante
         HttpEntity<String> request = new HttpEntity<>(json, headers);
-
+        
+     // Envia uma requisição POST para o endpoint de registo de estudantes
         String response = rest.postForObject(BASE_URL + "/estudantes/registar", request, String.class);
         System.out.println("\nEstudante registado: " + response);
     }
 
     private static void loginEstudante() {
         System.out.print("Email: ");
-        String email = sc.nextLine();
+        String email = ler.nextLine();
 
         System.out.print("Senha: ");
-        String senha = sc.nextLine();
+        String senha = ler.nextLine();
 
         // Criar JSON com dados do login
         String json = """
@@ -152,7 +157,7 @@ public class MainClient {
 
 
     private static void consultarHistorico() {
-        System.out.print("ID do estudante: "); long id =Long.parseLong(sc.nextLine());
+        System.out.print("ID do estudante: "); long id =Long.parseLong(ler.nextLine());
         String url = BASE_URL + "/estudantes/" + id + "/historico";
         String response = rest.getForObject(url, String.class);
         System.out.println("\nHistórico: " + response);
@@ -161,9 +166,9 @@ public class MainClient {
     private static void adicionarHoras() {
         try {
             System.out.print("ID do programa: "); 
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
             System.out.print("Horas a adicionar: "); 
-            int horas = Integer.parseInt(sc.nextLine());
+            int horas = Integer.parseInt(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/adicionarHoras?horas=" + horas;
             String response = rest.postForObject(url, null, String.class);
@@ -182,7 +187,7 @@ public class MainClient {
     private static void emitirDiploma() {
         try {
             System.out.print("ID do programa: "); 
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/emitirDiploma";
             String response = rest.getForObject(url, String.class);
@@ -201,7 +206,7 @@ public class MainClient {
     private static void consultarProgresso() {
         try {
             System.out.print("ID do programa: "); 
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/progresso";
             String response = rest.getForObject(url, String.class);
@@ -220,7 +225,7 @@ public class MainClient {
     private static void cancelarParticipacao() {
         try {
             System.out.print("ID do programa: "); 
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/cancelar";
             String response = rest.postForObject(url, null, String.class);
@@ -240,10 +245,10 @@ public class MainClient {
     private static void candidatarPrograma() {
         try {
             System.out.print("ID do Estudante: ");
-            long estudanteId = Long.parseLong(sc.nextLine());
+            long estudanteId = Long.parseLong(ler.nextLine());
 
             System.out.print("ID do Programa: ");
-            long programaId = Long.parseLong(sc.nextLine());
+            long programaId = Long.parseLong(ler.nextLine());
 
             // Criar JSON com IDs
             String json = """
@@ -276,10 +281,10 @@ public class MainClient {
 
     // ------------------- MÉTODOS PARCEIRO -------------------
     private static void registarParceiro() {
-        System.out.print("Nome: "); String nome = sc.nextLine();
-        System.out.print("Email: "); String email = sc.nextLine();
-        System.out.print("Password: "); String password = sc.nextLine();
-        System.out.print("Local: "); String local = sc.nextLine();
+        System.out.print("Nome: "); String nome = ler.nextLine();
+        System.out.print("Email: "); String email = ler.nextLine();
+        System.out.print("Password: "); String password = ler.nextLine();
+        System.out.print("Local: "); String local = ler.nextLine();
 
         String json = """
         {
@@ -299,8 +304,8 @@ public class MainClient {
     }
 
     private static void loginParceiro() {
-        System.out.print("Email: "); String email = sc.nextLine();
-        System.out.print("Password: "); String password = sc.nextLine();
+        System.out.print("Email: "); String email = ler.nextLine();
+        System.out.print("Password: "); String password = ler.nextLine();
 
         String url = BASE_URL + "/parceiros/login?email=" + email + "&password=" + password;
         String response = rest.postForObject(url, null, String.class);
@@ -308,20 +313,20 @@ public class MainClient {
     }
 
     private static void registarPrograma() {
-        System.out.print("ID do Parceiro: "); long id = Long.parseLong(sc.nextLine());
-        System.out.print("Título do programa: "); String titulo = sc.nextLine();
-        System.out.print("Horas: "); int horas_servico = Integer.parseInt(sc.nextLine());
-        System.out.print("Local:"); String local = sc.nextLine();
-        System.out.print("Descrição:"); String descricao = sc.nextLine();
-        System.out.print("Vagas: "); int vagas = Integer.parseInt(sc.nextLine());
+        System.out.print("ID do Parceiro: "); long id = Long.parseLong(ler.nextLine());
+        System.out.print("Título do programa: "); String titulo = ler.nextLine();
+        System.out.print("Horas: "); int horas_servico = Integer.parseInt(ler.nextLine());
+        System.out.print("Local:"); String local = ler.nextLine();
+        System.out.print("Descrição:"); String descricao = ler.nextLine();
+        System.out.print("Vagas: "); int vagas = Integer.parseInt(ler.nextLine());
 
         String json = """
         {
           "titulo": "%s",
-          "horas_servico": %d,
+          "horas_servico": %i,
           "local": "%s",
           "descricao": "%s",
-          "vagas": %d
+          "vagas": %i
         }
         """.formatted(titulo, horas_servico, local, descricao, vagas);
 
@@ -336,31 +341,31 @@ public class MainClient {
     private static void editarPrograma() {
         try {
             System.out.print("ID do Parceiro: ");
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
 
             System.out.print("ID do Programa: ");
-            long progId = Long.parseLong(sc.nextLine());
+            long progId = Long.parseLong(ler.nextLine());
 
             System.out.print("Novo título: ");
-            String titulo = sc.nextLine();
+            String titulo = ler.nextLine();
 
             System.out.print("Novas horas: ");
-            int horas = Integer.parseInt(sc.nextLine());
+            int horas = Integer.parseInt(ler.nextLine());
 
             System.out.print("Novo local: ");
-            String local = sc.nextLine();
+            String local = ler.nextLine();
 
             System.out.print("Nova descrição: ");
-            String descricao = sc.nextLine();
+            String descricao = ler.nextLine();
 
             System.out.print("Novas vagas: ");
-            int vagas = Integer.parseInt(sc.nextLine());
+            int vagas = Integer.parseInt(ler.nextLine());
 
             // Criar JSON com todos os campos
             String json = """
                     {
                       "titulo": "%s",
-                      "horas": %d,
+                      "horas_servico": %d,
                       "local": "%s",
                       "descricao": "%s",
                       "vagas": %d
@@ -374,7 +379,7 @@ public class MainClient {
             HttpEntity<String> request = new HttpEntity<>(json, headers);
 
             // URL do endpoint
-            String url = BASE_URL + "/parceiros/" + id + "/programa/editar";
+            String url = BASE_URL + "/parceiros/" + id + "/programa/"+ progId +"/editar";
 
             // Enviar PUT
             rest.exchange(url, HttpMethod.PUT, request, String.class);
@@ -391,10 +396,10 @@ public class MainClient {
     private static void eliminarPrograma() {
         try {
             System.out.print("ID do Parceiro: ");
-            long id = Long.parseLong(sc.nextLine());
+            long id = Long.parseLong(ler.nextLine());
 
             System.out.print("ID do Programa: ");
-            long progId = Long.parseLong(sc.nextLine());
+            long progId = Long.parseLong(ler.nextLine());
 
             // Construir URL do DELETE
             String url = BASE_URL + "/parceiros/" + id + "/programa/" + progId;
@@ -418,7 +423,7 @@ public class MainClient {
     }
 
     private static void listarCandidaturasPrograma() {
-        System.out.print("ID do programa: "); long id = Long.parseLong(sc.nextLine());
+        System.out.print("ID do programa: "); long id = Long.parseLong(ler.nextLine());
         String url = BASE_URL + "/candidaturas/programa/" + id;
         String response = rest.getForObject(url, String.class);
         System.out.println("\nCandidaturas do programa " + id + ":");
@@ -426,14 +431,14 @@ public class MainClient {
     }
 
     private static void aprovarCandidatura() {
-        System.out.print("ID da candidatura: "); long id = Long.parseLong(sc.nextLine());
+        System.out.print("ID da candidatura: "); long id = Long.parseLong(ler.nextLine());
         String url = BASE_URL + "/candidaturas/" + id + "/aprovar";
         String response = rest.postForObject(url, null, String.class);
         System.out.println("\nResultado: " + response);
     }
 
     private static void rejeitarCandidatura() {
-        System.out.print("ID da candidatura: "); long id = Long.parseLong(sc.nextLine());
+        System.out.print("ID da candidatura: "); long id = Long.parseLong(ler.nextLine());
         String url = BASE_URL + "/candidaturas/" + id + "/rejeitar";
         String response = rest.postForObject(url, null, String.class);
         System.out.println("\nResultado: " + response);

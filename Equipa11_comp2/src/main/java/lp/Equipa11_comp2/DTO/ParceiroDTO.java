@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.DTO;
-
+/**
+ * @author beatriz silva
+ */
 import java.util.List;
 
 public class ParceiroDTO {
