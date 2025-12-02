@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Repository;
-
+/**
+ * @author gonçalo silva
+ */
 import org.springframework.data.jpa.repository.JpaRepository;
 import lp.Equipa11_comp2.Entity.Candidatura;
 

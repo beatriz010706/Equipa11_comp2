@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Mapper;
-
+/**
+ * @author gonçalo silva
+ */
 import org.springframework.stereotype.Component;
 import lp.Equipa11_comp2.DTO.CandidaturaDTO;
 import lp.Equipa11_comp2.Entity.Candidatura;

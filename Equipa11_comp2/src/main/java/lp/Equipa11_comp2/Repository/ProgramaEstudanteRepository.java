@@ -1,6 +1,6 @@
 package lp.Equipa11_comp2.Repository;
 /**
- * @author diogo garcia
+ * @author diogo garcia 
  */
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

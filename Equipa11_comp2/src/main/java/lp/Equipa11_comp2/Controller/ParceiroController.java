@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.Controller;
-
+/**
+ * @author beatriz silva
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +36,9 @@ public class ParceiroController {
     }
 
     // Editar programa
-    @PostMapping("/{id}/programa/editar")
-    public void editarPrograma(@PathVariable Long id, @RequestBody ProgramaVoluntariado prog,
-                               @RequestParam String titulo, @RequestParam int horas) {
+    @PutMapping("/{id}/programa/{progId}/editar")
+    public void editarPrograma(@PathVariable Long id, @PathVariable Long progId,@RequestBody ProgramaVoluntariado prog,
+    		@RequestParam String titulo, @RequestParam int horas, @RequestParam String local, @RequestParam String descricao, @RequestParam int vagas) {
         Parceiro p = service.findById(id);
         if (p != null) service.editarPrograma(p, prog, titulo, horas);
     }
@@ -46,7 +48,6 @@ public class ParceiroController {
     public void eliminarPrograma(@PathVariable Long id, @PathVariable Long progId) {
         Parceiro p = service.findById(id);
         if (p != null) {
-            // Criar objeto ProgramaVoluntariado apenas com o ID
             ProgramaVoluntariado prog = new ProgramaVoluntariado();
             prog.setId(progId);
             service.eliminarPrograma(p, prog);
