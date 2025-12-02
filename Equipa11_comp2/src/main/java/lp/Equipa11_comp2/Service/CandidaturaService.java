@@ -94,4 +94,4 @@ public class CandidaturaService {
     public List<Candidatura> listarTodas() {
         return candidaturaRepo.findAll();
     }
-}
+}//fim classe

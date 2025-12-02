@@ -67,4 +67,4 @@ public class CandidaturaController {
     public List<CandidaturaDTO> todas() {
         return service.listarTodas().stream().map(mapper::toDTO).collect(Collectors.toList());
     }
-}
+}//fim classe

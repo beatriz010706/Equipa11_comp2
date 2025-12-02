@@ -27,17 +27,13 @@ public class UtilizadorService {
     @Autowired
     private UtilizadorMapper mapper;
 
-    // -----------------------------
     // REGISTAR
-    // -----------------------------
     public Utilizador registar(UtilizadorDTO dto) {
         Utilizador u = mapper.toEntity(dto);
         return repo.save(u);
     }
 
-    // -----------------------------
-    // LOGIN
-    // -----------------------------
+    //LOGIN
     public Utilizador login(String email, String password) {
         Optional<Utilizador> user = repo.findByEmail(email);
 
@@ -47,10 +43,8 @@ public class UtilizadorService {
         return null;
     }
 
-    // -----------------------------
     // HISTÓRICO DE CANDIDATURAS
-    // -----------------------------
     public List<Candidatura> consultarHistoricoCandidaturas(Long idUtilizador) {
         return candidaturaRepo.findByEstudante_IdUtilizador(idUtilizador);
     }
-}
+}//fim classe

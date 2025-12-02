@@ -33,5 +33,5 @@ public class UtilizadorController {
     public List<Candidatura> historico(@PathVariable Long id) {
         return service.consultarHistoricoCandidaturas(id);
     }
-}
+}//fim classe
 

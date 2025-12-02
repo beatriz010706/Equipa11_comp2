@@ -42,5 +42,5 @@ public class ParceiroDTO {
 
     public List<String> getProgramas() { return programas; }
     public void setProgramas(List<String> programas) { this.programas = programas; }
-}
+}//fim classe
 

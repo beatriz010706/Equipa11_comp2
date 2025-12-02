@@ -63,4 +63,4 @@ public class Candidatura {
                ", programa=" + prog +
                ", estado=" + estado + "}";
     }
-}
+}//fim classe

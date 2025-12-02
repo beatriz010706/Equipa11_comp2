@@ -47,4 +47,4 @@ public class ProgramaVoluntariadoDTO {
 
     public int getVagasOcupadas() { return vagasOcupadas; }
     public void setVagasOcupadas(int vagasOcupadas) { this.vagasOcupadas = vagasOcupadas; }
-}
+}//fim classe

@@ -443,4 +443,4 @@ public class MainClient {
         String response = rest.postForObject(url, null, String.class);
         System.out.println("\nResultado: " + response);
     }
-}
+}//fim classe

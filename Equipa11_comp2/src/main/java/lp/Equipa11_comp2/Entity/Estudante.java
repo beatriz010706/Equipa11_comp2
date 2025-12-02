@@ -43,4 +43,4 @@ public class Estudante extends Utilizador {
 
     public List<ProgramaEstudante> getProgramasEstudante() { return programasEstudante; }
     public void setProgramasEstudante(List<ProgramaEstudante> programasEstudante) { this.programasEstudante = programasEstudante; }
-}
+}//fim classe

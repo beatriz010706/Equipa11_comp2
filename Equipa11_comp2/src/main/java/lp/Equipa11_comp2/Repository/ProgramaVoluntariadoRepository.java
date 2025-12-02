@@ -10,4 +10,5 @@ import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 
 @Repository
 public interface ProgramaVoluntariadoRepository extends JpaRepository<ProgramaVoluntariado, Long> {
-}
+	
+}//fim classe

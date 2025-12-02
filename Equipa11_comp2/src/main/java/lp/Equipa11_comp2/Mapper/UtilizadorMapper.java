@@ -17,4 +17,4 @@ public class UtilizadorMapper {
                 dto.getPassword()
         );
     }
-}
+}//fim classe

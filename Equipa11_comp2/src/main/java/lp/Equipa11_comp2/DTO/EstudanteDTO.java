@@ -53,4 +53,4 @@ public class EstudanteDTO {
 
     public int getProgramasConcluidos() { return programasConcluidos; }
     public void setProgramasConcluidos(int programasConcluidos) { this.programasConcluidos = programasConcluidos; }
-}
+}//fim classe

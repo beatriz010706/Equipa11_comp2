@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 import lp.Equipa11_comp2.Entity.Tipo;
 
 @Repository
-public interface TipoRepository extends JpaRepository<Tipo, Long> {
-}
+public interface TipoRepository extends JpaRepository<Tipo, Long> { 
+	
+}//fim classe

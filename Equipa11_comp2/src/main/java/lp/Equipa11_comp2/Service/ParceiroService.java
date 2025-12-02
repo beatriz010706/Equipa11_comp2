@@ -60,18 +60,15 @@ public class ParceiroService {
     }
 
     public void eliminarPrograma(Parceiro p, ProgramaVoluntariado prog) {
-        // Buscar programa pelo ID enviado
+        // procurar programa pelo ID enviado
         ProgramaVoluntariado programa = programaRepo.findById(prog.getId())
                 .orElseThrow(() -> new RuntimeException("Programa não encontrado"));
 
-        // Remover do parceiro (se houver relação bidirecional)
         if (p.getProgramasVoluntariado() != null) {
             p.getProgramasVoluntariado().remove(programa);
         }
-
-        // Deletar do banco
         programaRepo.delete(programa);
 
     }
-}
+}//fim classe
 

@@ -7,4 +7,4 @@ public enum Estado {
     ACEITE,
     EM_ANDAMENTO,
     REJEITADA
-}
+}//fim classe
