@@ -323,10 +323,10 @@ public class MainClient {
         String json = """
         {
           "titulo": "%s",
-          "horas_servico": %i,
+          "horas_servico": %d,
           "local": "%s",
           "descricao": "%s",
-          "vagas": %i
+          "vagas": %d
         }
         """.formatted(titulo, horas_servico, local, descricao, vagas);
 
