@@ -14,4 +14,4 @@ public interface CandidaturaRepository extends JpaRepository<Candidatura, Long> 
 
     // Buscar candidaturas associadas a um programa de voluntariado
     List<Candidatura> findByProgramaVoluntariado_Id(Long programaId);
-}
+}//fim classe

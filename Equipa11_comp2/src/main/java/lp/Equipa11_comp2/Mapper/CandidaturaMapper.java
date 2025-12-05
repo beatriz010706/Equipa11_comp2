@@ -22,10 +22,8 @@ public class CandidaturaMapper {
                                   c.getEstado());
     }
 
-    /**
-     * Converte DTO → entity básica. Não resolve relações (estudante, programa).
-     * O serviço deve ligar estudante e programa usando os IDs do DTO.
-     */
+    //Converte DTO → entity básica. Não resolve relações (estudante, programa).
+    // O serviço deve ligar estudante e programa usando os IDs do DTO.
     public Candidatura fromDTO(CandidaturaDTO dto) {
         if (dto == null) return null;
         Candidatura c = new Candidatura();
@@ -34,5 +32,5 @@ public class CandidaturaMapper {
         // estudante e programa serão atribuídos no service através dos ids
         return c;
     }
-}
+}//fim classe
 

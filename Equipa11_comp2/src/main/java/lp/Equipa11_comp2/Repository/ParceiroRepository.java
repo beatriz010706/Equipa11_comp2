@@ -7,5 +7,5 @@ import lp.Equipa11_comp2.Entity.Parceiro;
 
 public interface ParceiroRepository extends JpaRepository<Parceiro, Long> {
     Parceiro findByEmail(String email);
-}
+}//fim classe
 

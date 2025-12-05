@@ -34,4 +34,4 @@ public class ProgramaVoluntariadoMapper {
         p.setVagasOcupadas(dto.getVagasOcupadas());
         return p;
     }
-}
+}//fim classe

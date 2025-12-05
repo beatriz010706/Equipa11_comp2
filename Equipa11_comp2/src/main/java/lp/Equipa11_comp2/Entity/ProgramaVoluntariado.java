@@ -77,4 +77,4 @@ public class ProgramaVoluntariado {
     public void setCandidaturas(List<Candidatura> candidaturas) { this.candidaturas = candidaturas; }
 
 	
-}
+}//fim classe

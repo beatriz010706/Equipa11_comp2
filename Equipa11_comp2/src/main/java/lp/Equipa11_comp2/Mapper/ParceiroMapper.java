@@ -42,5 +42,5 @@ public class ParceiroMapper {
         p.setLocal(dto.getLocal());
         return p;
     }
-}
+}//fim classe
 

@@ -16,4 +16,4 @@ public class TipoMapper {
     public Tipo toEntity(TipoDTO dto) {
         return new Tipo(dto.getDescricaoTipo());
     }
-}
+}//fim classe

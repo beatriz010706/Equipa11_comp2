@@ -56,5 +56,5 @@ public class Parceiro extends Utilizador {
         programasVoluntariado.remove(p);
         p.setParceiro(null);
     }
-}
+}//fim classe
 

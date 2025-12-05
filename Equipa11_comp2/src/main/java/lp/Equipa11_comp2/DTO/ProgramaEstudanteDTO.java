@@ -37,4 +37,4 @@ public class ProgramaEstudanteDTO {
 
     public boolean isEmitirDiploma() { return emitirDiploma; }
     public void setEmitirDiploma(boolean emitirDiploma) { this.emitirDiploma = emitirDiploma; }
-}
+}//fim classe

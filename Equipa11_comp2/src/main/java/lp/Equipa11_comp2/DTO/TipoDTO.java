@@ -19,4 +19,4 @@ public class TipoDTO {
 
     public String getDescricaoTipo() { return descricaoTipo; }
     public void setDescricaoTipo(String descricaoTipo) { this.descricaoTipo = descricaoTipo; }
-}
+}//fim classe

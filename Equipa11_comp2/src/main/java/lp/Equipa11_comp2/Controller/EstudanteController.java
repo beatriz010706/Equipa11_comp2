@@ -29,4 +29,4 @@ public class EstudanteController {
     public String consultarHistorico(@PathVariable Long id) {
         return service.consultarHistorico(id);
     }
-}
+}//fim classe
