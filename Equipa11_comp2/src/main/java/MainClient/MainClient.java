@@ -323,7 +323,11 @@ public class MainClient {
         String json = """
         {
           "titulo": "%s",
+<<<<<<< HEAD
           "horas_servico": %d, 
+=======
+          "horas_servico": %d,
+>>>>>>> refs/heads/dev_beatriz
           "local": "%s",
           "descricao": "%s",
           "vagas": %d
