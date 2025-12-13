@@ -165,62 +165,60 @@ public class MainClient {
 
     private static void adicionarHoras() {
         try {
-            System.out.print("ID do programa: "); 
+            System.out.print("ID do programa do estudante: ");
             long id = Long.parseLong(ler.nextLine());
-            System.out.print("Horas a adicionar: "); 
+
+            System.out.print("Horas a adicionar: ");
             int horas = Integer.parseInt(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/adicionarHoras?horas=" + horas;
             String response = rest.postForObject(url, null, String.class);
 
-            System.out.println("\n" + response);
+            System.out.println(response);
 
         } catch (NumberFormatException e) {
-            System.out.println("IDs e horas devem ser números válidos.");
+            System.out.println("Erro: valores inválidos.");
         } catch (HttpClientErrorException e) {
-            System.out.println("Erro: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
-        } catch (Exception e) {
-            System.out.println("Erro inesperado: " + e.getMessage());
+            System.out.println(e.getResponseBodyAsString());
         }
     }
 
+
     private static void emitirDiploma() {
         try {
-            System.out.print("ID do programa: "); 
+            System.out.print("ID do programa do estudante: ");
             long id = Long.parseLong(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/emitirDiploma";
             String response = rest.getForObject(url, String.class);
 
-            System.out.println("\n" + response);
+            System.out.println(response);
 
         } catch (NumberFormatException e) {
-            System.out.println("IDs devem ser números válidos.");
+            System.out.println("Erro: ID inválido.");
         } catch (HttpClientErrorException e) {
-            System.out.println("Erro: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
-        } catch (Exception e) {
-            System.out.println("Erro inesperado: " + e.getMessage());
+            System.out.println(e.getResponseBodyAsString());
         }
     }
 
+
     private static void consultarProgresso() {
         try {
-            System.out.print("ID do programa: "); 
+            System.out.print("ID do programa do estudante: ");
             long id = Long.parseLong(ler.nextLine());
 
             String url = BASE_URL + "/programasEstudante/" + id + "/progresso";
             String response = rest.getForObject(url, String.class);
 
-            System.out.println("\n" + response);
+            System.out.println(response);
 
         } catch (NumberFormatException e) {
-            System.out.println("IDs devem ser números válidos.");
+            System.out.println("Erro: ID inválido.");
         } catch (HttpClientErrorException e) {
-            System.out.println("Erro: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
-        } catch (Exception e) {
-            System.out.println("Erro inesperado: " + e.getMessage());
+            System.out.println(e.getResponseBodyAsString());
         }
     }
+
 
     private static void cancelarParticipacao() {
         try {
