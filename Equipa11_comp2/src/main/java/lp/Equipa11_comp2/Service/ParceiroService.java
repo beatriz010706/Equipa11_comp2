@@ -4,6 +4,7 @@ package lp.Equipa11_comp2.Service;
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lp.Equipa11_comp2.DTO.ParceiroDTO;
 import lp.Equipa11_comp2.Entity.Parceiro;
@@ -13,6 +14,7 @@ import lp.Equipa11_comp2.Repository.ParceiroRepository;
 import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 
 @Service
+@Transactional
 public class ParceiroService {
 
     @Autowired
