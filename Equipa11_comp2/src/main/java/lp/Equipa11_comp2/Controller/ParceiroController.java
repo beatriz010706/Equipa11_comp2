@@ -1,4 +1,6 @@
 package lp.Equipa11_comp2.Controller;
+import java.util.List;
+
 /**
  * @author beatriz silva
  */
@@ -6,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import lp.Equipa11_comp2.DTO.ParceiroDTO;
+import lp.Equipa11_comp2.DTO.ProgramaVoluntariadoDTO;
 import lp.Equipa11_comp2.Service.ParceiroService;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 import lp.Equipa11_comp2.Entity.Parceiro;
@@ -54,6 +57,10 @@ public class ParceiroController {
         }
     }
     
-    
+ // CORREÇÃO: o endpoint passa a devolver uma LISTA
+    @GetMapping("/programas")
+    public List<ProgramaVoluntariadoDTO> listarProgramas() {
+        return service.listarProgramas();
+    }
 }//fim classe
 
