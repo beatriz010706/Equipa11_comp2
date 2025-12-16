@@ -4,6 +4,8 @@ package lp.Equipa11_comp2.Service;
  */
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import lp.Equipa11_comp2.DTO.*;
 import lp.Equipa11_comp2.Entity.*;
 import lp.Equipa11_comp2.Mapper.*;
@@ -12,6 +14,7 @@ import lp.Equipa11_comp2.Repository.*;
 import java.util.List;
 
 @Service
+@Transactional
 public class EstudanteService {
 
     @Autowired

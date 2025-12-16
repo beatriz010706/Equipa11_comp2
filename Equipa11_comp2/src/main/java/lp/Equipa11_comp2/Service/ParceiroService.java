@@ -1,11 +1,15 @@
 package lp.Equipa11_comp2.Service;
+import java.util.List;
+
 /**
  * @author beatriz silva
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lp.Equipa11_comp2.DTO.ParceiroDTO;
+import lp.Equipa11_comp2.DTO.ProgramaVoluntariadoDTO;
 import lp.Equipa11_comp2.Entity.Parceiro;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 import lp.Equipa11_comp2.Mapper.ParceiroMapper;
@@ -13,6 +17,7 @@ import lp.Equipa11_comp2.Repository.ParceiroRepository;
 import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 
 @Service
+@Transactional
 public class ParceiroService {
 
     @Autowired
@@ -69,6 +74,14 @@ public class ParceiroService {
         }
         programaRepo.delete(programa);
 
+    }
+
+ // CORREÇÃO: método que devolve TODOS os programas
+    public List<ProgramaVoluntariadoDTO> listarProgramas() {
+        return programaRepo.findAll()
+                .stream()
+                .map(ProgramaVoluntariadoDTO::new)
+                .toList();
     }
 }//fim classe
 

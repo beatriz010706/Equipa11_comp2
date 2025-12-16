@@ -1,5 +1,7 @@
 package lp.Equipa11_comp2.DTO;
 
+import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
+
 /**
  * @author miguel silva
  */
@@ -24,6 +26,17 @@ public class ProgramaVoluntariadoDTO {
         this.local = local;
         this.vagas = vagas;
         this.vagasOcupadas = vagasOcupadas;
+    }
+ // CORREÇÃO: construtor que recebe a entidade ProgramaVoluntariado
+    // Necessário para conversão Entity -> DTO no service (stream.map)
+    public ProgramaVoluntariadoDTO(ProgramaVoluntariado programa) {
+        this.id = programa.getId();
+        this.titulo = programa.getTitulo();
+        this.descricao = programa.getDescricao();
+        this.horasServico = programa.getHorasServico();
+        this.local = programa.getLocal();
+        this.vagas = programa.getVagas();
+        this.vagasOcupadas = programa.getVagasOcupadas();
     }
 
     // Getters e Setters
