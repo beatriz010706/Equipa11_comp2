@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
 import lp.Equipa11_comp2.DTO.ParceiroDTO;
+import lp.Equipa11_comp2.DTO.ProgramaVoluntariadoDTO;
 import lp.Equipa11_comp2.Entity.*;
 import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 import lp.Equipa11_comp2.Repository.CandidaturaRepository;
@@ -62,6 +63,13 @@ public class ProgramaVoluntariadoService {
             }
         }
         return aprovados;
+    }
+    
+    public List<ProgramaVoluntariadoDTO> listarProgramas() {
+        return repo.findAll()
+                .stream()
+                .map(p -> new ProgramaVoluntariadoDTO())
+                .collect(Collectors.toList());
     }
 
 }//fim classe

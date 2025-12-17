@@ -5,6 +5,7 @@ package lp.Equipa11_comp2.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import lp.Equipa11_comp2.DTO.ProgramaEstudanteDTO;
 import lp.Equipa11_comp2.Entity.ProgramaEstudante;
 import lp.Equipa11_comp2.Service.ProgramaEstudanteService;
 
@@ -82,4 +83,10 @@ public class ProgramaEstudanteController {
         service.cancelarParticipacao(id);
         return "Participação cancelada com sucesso!";
     }
+    
+    @GetMapping("/programaEstudante")
+    public List<ProgramaEstudanteDTO> listarProgramasEstudante() {
+        return service.listarProgramasEstudante(); // retorna todos os programas dos estudantes
+    }
+
 }//fim classe

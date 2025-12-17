@@ -5,6 +5,7 @@ package lp.Equipa11_comp2.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lp.Equipa11_comp2.DTO.CandidaturaDTO;
 import lp.Equipa11_comp2.Entity.Candidatura;
 import lp.Equipa11_comp2.Entity.Estado;
 import lp.Equipa11_comp2.Entity.Estudante;
@@ -16,6 +17,7 @@ import lp.Equipa11_comp2.Repository.ProgramaVoluntariadoRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CandidaturaService {
@@ -93,5 +95,12 @@ public class CandidaturaService {
 
     public List<Candidatura> listarTodas() {
         return candidaturaRepo.findAll();
+    }
+    
+    public List<CandidaturaDTO> listarCandidaturas() {
+        return candidaturaRepo.findAll()
+                .stream()
+                .map(c -> new CandidaturaDTO())
+                .collect(Collectors.toList());
     }
 }//fim classe

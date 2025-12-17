@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import lp.Equipa11_comp2.Entity.ProgramaVoluntariado;
+import lp.Equipa11_comp2.DTO.ProgramaVoluntariadoDTO;
 import lp.Equipa11_comp2.Entity.Candidatura;
 import lp.Equipa11_comp2.Service.ProgramaVoluntariadoService;
 
@@ -46,4 +47,10 @@ public class ProgramaVoluntariadoController {
         p.setId(id);
         return service.verificarVagasDisponiveis(p);
     }
+    
+    @GetMapping("/programas")
+    public List<ProgramaVoluntariadoDTO> listarProgramas() {
+        return service.listarProgramas(); // retorna todos os programas de voluntariado
+    }
+
 }//fim classe
