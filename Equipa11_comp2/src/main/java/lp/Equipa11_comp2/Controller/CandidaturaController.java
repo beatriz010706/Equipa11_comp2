@@ -67,4 +67,10 @@ public class CandidaturaController {
     public List<CandidaturaDTO> todas() {
         return service.listarTodas().stream().map(mapper::toDTO).collect(Collectors.toList());
     }
+    
+    @GetMapping("/candidaturas")
+    public List<CandidaturaDTO> listarCandidaturas() {
+        return service.listarCandidaturas(); // retorna todas as candidaturas
+    }
+
 }//fim classe
